@@ -67,6 +67,10 @@
     [#608](https://github.com/eclipse-iceoryx/iceoryx2/issues/608)
 * Allow missing legal characters in system type for user- and group-name
     [#677](https://github.com/eclipse-iceoryx/iceoryx2/issues/677)
+* Fix `wait_and_process_once_with_timeout` deadlock
+    [#695](https://github.com/eclipse-iceoryx/iceoryx2/issues/695)
+* Fix Miri issues with MetaVec due to temporary borrow
+    [#682](https://github.com/eclipse-iceoryx/iceoryx2/issues/682)
 
 ### Refactoring
 
@@ -85,6 +89,8 @@
     [#638](https://github.com/eclipse-iceoryx/iceoryx2/issues/638)
 * Reduce indentation in `main.rs` of CLI binaries
     [#646](https://github.com/eclipse-iceoryx/iceoryx2/issues/646)
+* Improve naming in `AttributeSet` methods and `ServiceId`
+    [#697](https://github.com/eclipse-iceoryx/iceoryx2/issues/697)
 
 ### Workflow
 
@@ -209,3 +215,18 @@
 
 6. Renamed `ConnectionFailure::UnableToMapPublishersDataSegment`
    into `ConnectionFailure::UnableToMapSendersDataSegment`
+
+7. Renamed `AttributeSet::len()`
+   into `AttributeSet::number_of_attributes()`
+
+8. Renamed `AttributeSet::get_key_value_len()`
+   into `AttributeSet::number_of_key_values()`
+
+9. Renamed `AttributeSet::get_key_value_at()`
+   into `AttributeSet::key_value()`
+
+10. Renamed `AttributeSet::get_key_values()`
+   into `AttributeSet::iter_key_values()`
+
+11. Renamed `ServiceId::max_len()`
+   into `ServiceId::max_number_of_characters()`
