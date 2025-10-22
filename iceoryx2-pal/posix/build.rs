@@ -13,6 +13,23 @@
 #[cfg(feature = "libc_platform")]
 fn main() {}
 
+fn list_dirs<P: AsRef<std::path::Path>>(path: P) -> std::io::Result<Vec<String>> {
+    let mut dirs = Vec::new();
+
+    for entry in std::fs::read_dir(path)? {
+        let entry = entry?;
+        let path = entry.path();
+
+        if path.is_dir() {
+            if let Some(name) = path.file_name().and_then(|n| n.to_str()) {
+                dirs.push(name.to_string());
+            }
+        }
+    }
+
+    Ok(dirs)
+}
+
 #[cfg(not(feature = "libc_platform"))]
 fn main() {
     extern crate bindgen;
@@ -20,6 +37,8 @@ fn main() {
 
     use bindgen::*;
     use std::env;
+    use std::fs;
+    use std::path::Path;
     use std::path::PathBuf;
 
     // #[cfg(any(...))] does not work when cross-compiling
@@ -85,7 +104,14 @@ fn main() {
             builder = builder.clang_arg(*arg);
         }
 
-        if let Ok(sysroot) = env::var("QNX_TARGET") {
+        if let Ok(sysroot) = env::var("PAWEL_RUTKA_DUPA") {
+            println!("PAWEL_RUTKA_DUPA: {}", sysroot);
+            let dirs = list_dirs(sysroot.clone()).unwrap(); //
+
+            for dir in dirs {
+                println!("{dir}");
+            }
+
             builder = builder.clang_arg(format!("--sysroot={sysroot}"));
             builder = builder.clang_arg(format!("-I{sysroot}/usr/include"));
             builder = builder.clang_arg(format!("-I{sysroot}/usr/include/c++/v1"));
@@ -93,6 +119,13 @@ fn main() {
             panic!("QNX_TARGET environment variable not set for QNX build")
         }
     }
+
+    match env::current_dir() {
+        Ok(path) => println!("Current directory: {}", path.display()),
+        Err(e) => eprintln!("Failed to get current directory: {}", e),
+    }
+
+    println!("bla vla {:?}", builder);
 
     let bindings = builder.generate().expect("Unable to generate bindings");
 
