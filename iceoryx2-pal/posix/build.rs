@@ -85,12 +85,20 @@ fn main() {
             builder = builder.clang_arg(*arg);
         }
 
+        // Prefer QNX_TARGET; fall back to BINDGEN_EXTRA_CLANG_ARGS for Bazel sandbox.
         if let Ok(sysroot) = env::var("QNX_TARGET") {
             builder = builder.clang_arg(format!("--sysroot={sysroot}"));
             builder = builder.clang_arg(format!("-I{sysroot}/usr/include"));
             builder = builder.clang_arg(format!("-I{sysroot}/usr/include/c++/v1"));
+        } else if let Ok(extra) = env::var("BINDGEN_EXTRA_CLANG_ARGS") {
+            for tok in extra.split_whitespace().filter(|s| !s.is_empty()) {
+                builder = builder.clang_arg(tok);
+            }
         } else {
-            panic!("QNX_TARGET environment variable not set for QNX build")
+            panic!(
+                "QNX build detected (CARGO_CFG_TARGET_OS=nto) but neither QNX_TARGET \
+                 nor BINDGEN_EXTRA_CLANG_ARGS are set"
+            );
         }
     }
 
