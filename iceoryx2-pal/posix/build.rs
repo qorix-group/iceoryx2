@@ -10,6 +10,26 @@
 //
 // SPDX-License-Identifier: Apache-2.0 OR MIT
 
+// at the top of build.rs
+use std::{env, fs, path::PathBuf};
+
+fn dump_env() {
+    // print everything to the build log
+    for (k, v) in env::vars() {
+        println!("cargo:warning={k}={v}");
+    }
+
+    // also save to a file under OUT_DIR for later inspection
+    if let Ok(out) = env::var("OUT_DIR") {
+        let mut body = String::new();
+        for (k, v) in env::vars() {
+            body.push_str(&format!("{k}={v}\n"));
+        }
+        let _ = fs::write(PathBuf::from(out).join("env.txt"), body);
+    }
+}
+
+
 #[cfg(feature = "libc_platform")]
 fn main() {}
 
@@ -27,7 +47,8 @@ fn main() {
     if target_os == "linux" || target_os == "freebsd" {
         println!("cargo:rustc-link-lib=pthread");
     }
-
+    
+    dump_env();
     println!("cargo:rerun-if-changed=src/c/posix.h");
 
     let mut builder = bindgen::Builder::default()
