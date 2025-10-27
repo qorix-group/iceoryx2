@@ -22,6 +22,26 @@ fn main() {
     use std::env;
     use std::path::PathBuf;
 
+    let cc = std::env::var("CC").unwrap_or_else(|_| "qcc".to_string());
+
+    // /proc/self/cwd
+    let sysroot_fixed;
+    let mTarget: &'static str = "execroot/_main";
+    if let Some(pos) = cc.find(mTarget) {
+        sysroot_fixed = &cc[..pos + mTarget.len()];
+        println!("{sysroot_fixed}");
+    } else {
+        panic!("QNX_TARGET environment variable is not correctly set for QNX build");
+    }
+
+    let target = env::var("QNX_TARGET").unwrap_or_default();
+    let host = env::var("QNX_HOST").unwrap_or_default();
+
+    let new_target = target.replace("/proc/self/cwd", sysroot_fixed);
+    let new_host = host.replace("/proc/self/cwd", sysroot_fixed);
+    env::set_var("QNX_TARGET", new_target);
+    env::set_var("QNX_HOST", new_host);
+
     // #[cfg(any(...))] does not work when cross-compiling
     let target_os = std::env::var("CARGO_CFG_TARGET_OS").unwrap();
     if target_os == "linux" || target_os == "freebsd" {
@@ -86,6 +106,8 @@ fn main() {
         }
 
         if let Ok(sysroot) = env::var("QNX_TARGET") {
+            println!("Using sysroot: {sysroot}");
+
             builder = builder.clang_arg(format!("--sysroot={sysroot}"));
             builder = builder.clang_arg(format!("-I{sysroot}/usr/include"));
             builder = builder.clang_arg(format!("-I{sysroot}/usr/include/c++/v1"));
