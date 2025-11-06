@@ -461,7 +461,7 @@ files = [
 ]
 
 [package.dependencies]
-mccabe = ">=0.7.0,<0.8.0"
+mccabe = ">=0.7.1,<0.8.0"
 pycodestyle = ">=2.14.0,<2.15.0"
 pyflakes = ">=3.4.0,<3.5.0"
 
@@ -769,14 +769,14 @@ zig = ["ziglang (>=0.10.0,<0.13.0)"]
 
 [[package]]
 name = "mccabe"
-version = "0.7.0"
+version = "0.7.1"
 description = "McCabe checker, plugin for flake8"
 optional = false
 python-versions = ">=3.6"
 groups = ["dev"]
 files = [
-    {file = "mccabe-0.7.0-py2.py3-none-any.whl", hash = "sha256:6c2d30ab6be0e4a46919781807b4f0d834ebdd6c6e3dca0bda5a15f863427b6e"},
-    {file = "mccabe-0.7.0.tar.gz", hash = "sha256:348e0240c33b60bbdf4e523192ef919f28cb2c3d7d5c7794f74009290f236325"},
+    {file = "mccabe-0.7.1-py2.py3-none-any.whl", hash = "sha256:6c2d30ab6be0e4a46919781807b4f0d834ebdd6c6e3dca0bda5a15f863427b6e"},
+    {file = "mccabe-0.7.1.tar.gz", hash = "sha256:348e0240c33b60bbdf4e523192ef919f28cb2c3d7d5c7794f74009290f236325"},
 ]
 
 [[package]]
@@ -1014,7 +1014,7 @@ files = [
 [package.dependencies]
 dodgy = ">=0.2.1,<0.3.0"
 GitPython = ">=3.1.27,<4.0.0"
-mccabe = ">=0.7.0,<0.8.0"
+mccabe = ">=0.7.1,<0.8.0"
 mypy = {version = "*", optional = true, markers = "extra == \"with-mypy\""}
 packaging = "*"
 pep8-naming = ">=0.3.3,<=0.10.0"

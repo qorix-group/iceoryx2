@@ -1,8 +1,8 @@
-# iceoryx2 v0.7.0
+# iceoryx2 v0.7.1
 
-## [v0.7.0](https://github.com/eclipse-iceoryx/iceoryx2/tree/v0.7.0)
+## [v0.7.1](https://github.com/eclipse-iceoryx/iceoryx2/tree/v0.7.1)
 
-[Full Changelog](https://github.com/eclipse-iceoryx/iceoryx2/compare/v0.6.1...v0.7.0)
+[Full Changelog](https://github.com/eclipse-iceoryx/iceoryx2/compare/v0.6.1...v0.7.1)
 
 ### Features
 
