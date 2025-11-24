@@ -232,9 +232,9 @@ name = "benchmark-event"
 version = "0.7.0"
 dependencies = [
  "clap",
- "iceoryx2",
- "iceoryx2-bb-log",
- "iceoryx2-bb-posix",
+ "iceoryx2-bb-log-qnx8",
+ "iceoryx2-bb-posix-qnx8",
+ "iceoryx2-qnx8",
 ]
 
 [[package]]
@@ -242,10 +242,10 @@ name = "benchmark-publish-subscribe"
 version = "0.7.0"
 dependencies = [
  "clap",
- "iceoryx2",
- "iceoryx2-bb-container",
- "iceoryx2-bb-log",
- "iceoryx2-bb-posix",
+ "iceoryx2-bb-container-qnx8",
+ "iceoryx2-bb-log-qnx8",
+ "iceoryx2-bb-posix-qnx8",
+ "iceoryx2-qnx8",
 ]
 
 [[package]]
@@ -253,8 +253,8 @@ name = "benchmark-queue"
 version = "0.7.0"
 dependencies = [
  "clap",
- "iceoryx2-bb-lock-free",
- "iceoryx2-bb-posix",
+ "iceoryx2-bb-lock-free-qnx8",
+ "iceoryx2-bb-posix-qnx8",
 ]
 
 [[package]]
@@ -262,10 +262,10 @@ name = "benchmark-request-response"
 version = "0.7.0"
 dependencies = [
  "clap",
- "iceoryx2",
- "iceoryx2-bb-container",
- "iceoryx2-bb-log",
- "iceoryx2-bb-posix",
+ "iceoryx2-bb-container-qnx8",
+ "iceoryx2-bb-log-qnx8",
+ "iceoryx2-bb-posix-qnx8",
+ "iceoryx2-qnx8",
 ]
 
 [[package]]
@@ -544,13 +544,13 @@ dependencies = [
 name = "component-tests_rust"
 version = "0.7.0"
 dependencies = [
- "iceoryx2",
- "iceoryx2-bb-container",
- "iceoryx2-bb-derive-macros",
- "iceoryx2-bb-elementary",
- "iceoryx2-bb-elementary-traits",
- "iceoryx2-bb-log",
- "iceoryx2-bb-system-types",
+ "iceoryx2-bb-container-qnx8",
+ "iceoryx2-bb-derive-macros-qnx8",
+ "iceoryx2-bb-elementary-qnx8",
+ "iceoryx2-bb-elementary-traits-qnx8",
+ "iceoryx2-bb-log-qnx8",
+ "iceoryx2-bb-system-types-qnx8",
+ "iceoryx2-qnx8",
  "iceoryx2-services-discovery",
 ]
 
@@ -927,13 +927,13 @@ name = "example"
 version = "0.7.0"
 dependencies = [
  "clap",
- "iceoryx2",
- "iceoryx2-bb-container",
- "iceoryx2-bb-derive-macros",
- "iceoryx2-bb-elementary",
- "iceoryx2-bb-elementary-traits",
- "iceoryx2-bb-log",
- "iceoryx2-bb-system-types",
+ "iceoryx2-bb-container-qnx8",
+ "iceoryx2-bb-derive-macros-qnx8",
+ "iceoryx2-bb-elementary-qnx8",
+ "iceoryx2-bb-elementary-traits-qnx8",
+ "iceoryx2-bb-log-qnx8",
+ "iceoryx2-bb-system-types-qnx8",
+ "iceoryx2-qnx8",
  "iceoryx2-services-discovery",
 ]
 
@@ -1273,29 +1273,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "iceoryx2"
-version = "0.7.0"
-dependencies = [
- "iceoryx2-bb-container",
- "iceoryx2-bb-derive-macros",
- "iceoryx2-bb-elementary",
- "iceoryx2-bb-elementary-traits",
- "iceoryx2-bb-lock-free",
- "iceoryx2-bb-log",
- "iceoryx2-bb-memory",
- "iceoryx2-bb-posix",
- "iceoryx2-bb-system-types",
- "iceoryx2-bb-testing",
- "iceoryx2-cal",
- "iceoryx2-pal-concurrency-sync",
- "iceoryx2-pal-configuration",
- "iceoryx2-pal-testing",
- "serde",
- "tiny-fn",
- "toml",
-]
-
-[[package]]
 name = "iceoryx2-bb-conformance-test-macros"
 version = "0.7.0"
 dependencies = [
@@ -1305,163 +1282,163 @@ dependencies = [
 ]
 
 [[package]]
-name = "iceoryx2-bb-container"
+name = "iceoryx2-bb-container-qnx8"
 version = "0.7.0"
 dependencies = [
  "generic-tests",
- "iceoryx2-bb-derive-macros",
- "iceoryx2-bb-elementary",
- "iceoryx2-bb-elementary-traits",
- "iceoryx2-bb-log",
- "iceoryx2-bb-testing",
- "iceoryx2-pal-concurrency-sync",
- "iceoryx2-pal-testing",
+ "iceoryx2-bb-derive-macros-qnx8",
+ "iceoryx2-bb-elementary-qnx8",
+ "iceoryx2-bb-elementary-traits-qnx8",
+ "iceoryx2-bb-log-qnx8",
+ "iceoryx2-bb-testing-qnx8",
+ "iceoryx2-pal-concurrency-sync-qnx8",
+ "iceoryx2-pal-testing-qnx8",
  "serde",
  "serde_test",
 ]
 
 [[package]]
-name = "iceoryx2-bb-derive-macros"
+name = "iceoryx2-bb-derive-macros-qnx8"
 version = "0.7.0"
 dependencies = [
- "iceoryx2-bb-elementary",
- "iceoryx2-bb-elementary-traits",
- "iceoryx2-bb-testing",
- "iceoryx2-pal-testing",
+ "iceoryx2-bb-elementary-qnx8",
+ "iceoryx2-bb-elementary-traits-qnx8",
+ "iceoryx2-bb-testing-qnx8",
+ "iceoryx2-pal-testing-qnx8",
  "proc-macro2",
  "quote",
  "syn 2.0.87",
 ]
 
 [[package]]
-name = "iceoryx2-bb-elementary"
+name = "iceoryx2-bb-elementary-qnx8"
 version = "0.7.0"
 dependencies = [
  "generic-tests",
- "iceoryx2-bb-elementary-traits",
- "iceoryx2-bb-testing",
- "iceoryx2-pal-concurrency-sync",
- "iceoryx2-pal-testing",
+ "iceoryx2-bb-elementary-traits-qnx8",
+ "iceoryx2-bb-testing-qnx8",
+ "iceoryx2-pal-concurrency-sync-qnx8",
+ "iceoryx2-pal-testing-qnx8",
 ]
 
 [[package]]
-name = "iceoryx2-bb-elementary-traits"
+name = "iceoryx2-bb-elementary-traits-qnx8"
 version = "0.7.0"
 dependencies = [
- "iceoryx2-pal-concurrency-sync",
+ "iceoryx2-pal-concurrency-sync-qnx8",
 ]
 
 [[package]]
-name = "iceoryx2-bb-linux"
+name = "iceoryx2-bb-linux-qnx8"
 version = "0.7.0"
 dependencies = [
- "iceoryx2-bb-container",
- "iceoryx2-bb-log",
- "iceoryx2-bb-posix",
- "iceoryx2-bb-system-types",
- "iceoryx2-bb-testing",
- "iceoryx2-pal-concurrency-sync",
- "iceoryx2-pal-os-api",
- "iceoryx2-pal-posix",
- "iceoryx2-pal-testing",
+ "iceoryx2-bb-container-qnx8",
+ "iceoryx2-bb-log-qnx8",
+ "iceoryx2-bb-posix-qnx8",
+ "iceoryx2-bb-system-types-qnx8",
+ "iceoryx2-bb-testing-qnx8",
+ "iceoryx2-pal-concurrency-sync-qnx8",
+ "iceoryx2-pal-os-api-qnx8",
+ "iceoryx2-pal-posix-qnx8",
+ "iceoryx2-pal-testing-qnx8",
 ]
 
 [[package]]
-name = "iceoryx2-bb-lock-free"
+name = "iceoryx2-bb-lock-free-qnx8"
 version = "0.7.0"
 dependencies = [
  "generic-tests",
- "iceoryx2-bb-elementary",
- "iceoryx2-bb-elementary-traits",
- "iceoryx2-bb-log",
- "iceoryx2-bb-posix",
- "iceoryx2-bb-testing",
- "iceoryx2-pal-concurrency-sync",
- "iceoryx2-pal-testing",
+ "iceoryx2-bb-elementary-qnx8",
+ "iceoryx2-bb-elementary-traits-qnx8",
+ "iceoryx2-bb-log-qnx8",
+ "iceoryx2-bb-posix-qnx8",
+ "iceoryx2-bb-testing-qnx8",
+ "iceoryx2-pal-concurrency-sync-qnx8",
+ "iceoryx2-pal-testing-qnx8",
 ]
 
 [[package]]
-name = "iceoryx2-bb-log"
+name = "iceoryx2-bb-log-qnx8"
 version = "0.7.0"
 dependencies = [
- "iceoryx2-pal-concurrency-sync",
+ "iceoryx2-pal-concurrency-sync-qnx8",
  "log",
  "tracing",
 ]
 
 [[package]]
-name = "iceoryx2-bb-memory"
+name = "iceoryx2-bb-memory-qnx8"
 version = "0.7.0"
 dependencies = [
- "iceoryx2-bb-elementary",
- "iceoryx2-bb-elementary-traits",
- "iceoryx2-bb-lock-free",
- "iceoryx2-bb-log",
- "iceoryx2-bb-posix",
- "iceoryx2-bb-testing",
- "iceoryx2-pal-concurrency-sync",
- "iceoryx2-pal-testing",
+ "iceoryx2-bb-elementary-qnx8",
+ "iceoryx2-bb-elementary-traits-qnx8",
+ "iceoryx2-bb-lock-free-qnx8",
+ "iceoryx2-bb-log-qnx8",
+ "iceoryx2-bb-posix-qnx8",
+ "iceoryx2-bb-testing-qnx8",
+ "iceoryx2-pal-concurrency-sync-qnx8",
+ "iceoryx2-pal-testing-qnx8",
 ]
 
 [[package]]
-name = "iceoryx2-bb-posix"
+name = "iceoryx2-bb-posix-qnx8"
 version = "0.7.0"
 dependencies = [
  "enum-iterator",
  "generic-tests",
- "iceoryx2-bb-container",
- "iceoryx2-bb-derive-macros",
- "iceoryx2-bb-elementary",
- "iceoryx2-bb-elementary-traits",
- "iceoryx2-bb-log",
- "iceoryx2-bb-system-types",
- "iceoryx2-bb-testing",
- "iceoryx2-pal-concurrency-sync",
- "iceoryx2-pal-configuration",
- "iceoryx2-pal-posix",
- "iceoryx2-pal-testing",
+ "iceoryx2-bb-container-qnx8",
+ "iceoryx2-bb-derive-macros-qnx8",
+ "iceoryx2-bb-elementary-qnx8",
+ "iceoryx2-bb-elementary-traits-qnx8",
+ "iceoryx2-bb-log-qnx8",
+ "iceoryx2-bb-system-types-qnx8",
+ "iceoryx2-bb-testing-qnx8",
+ "iceoryx2-pal-concurrency-sync-qnx8",
+ "iceoryx2-pal-configuration-qnx8",
+ "iceoryx2-pal-posix-qnx8",
+ "iceoryx2-pal-testing-qnx8",
  "lazy_static",
  "serde",
  "tiny-fn",
 ]
 
 [[package]]
-name = "iceoryx2-bb-system-types"
+name = "iceoryx2-bb-system-types-qnx8"
 version = "0.7.0"
 dependencies = [
- "iceoryx2-bb-container",
- "iceoryx2-bb-derive-macros",
- "iceoryx2-bb-elementary",
- "iceoryx2-bb-elementary-traits",
- "iceoryx2-bb-log",
- "iceoryx2-bb-testing",
- "iceoryx2-pal-configuration",
- "iceoryx2-pal-posix",
- "iceoryx2-pal-testing",
+ "iceoryx2-bb-container-qnx8",
+ "iceoryx2-bb-derive-macros-qnx8",
+ "iceoryx2-bb-elementary-qnx8",
+ "iceoryx2-bb-elementary-traits-qnx8",
+ "iceoryx2-bb-log-qnx8",
+ "iceoryx2-bb-testing-qnx8",
+ "iceoryx2-pal-configuration-qnx8",
+ "iceoryx2-pal-posix-qnx8",
+ "iceoryx2-pal-testing-qnx8",
  "serde",
 ]
 
 [[package]]
-name = "iceoryx2-bb-testing"
+name = "iceoryx2-bb-testing-qnx8"
 version = "0.7.0"
 dependencies = [
- "iceoryx2-bb-elementary-traits",
- "iceoryx2-pal-configuration",
- "iceoryx2-pal-testing",
+ "iceoryx2-bb-elementary-traits-qnx8",
+ "iceoryx2-pal-configuration-qnx8",
+ "iceoryx2-pal-testing-qnx8",
 ]
 
 [[package]]
-name = "iceoryx2-bb-threadsafe"
+name = "iceoryx2-bb-threadsafe-qnx8"
 version = "0.7.0"
 dependencies = [
- "iceoryx2-bb-container",
- "iceoryx2-bb-elementary",
- "iceoryx2-bb-elementary-traits",
- "iceoryx2-bb-log",
- "iceoryx2-bb-posix",
- "iceoryx2-bb-testing",
- "iceoryx2-pal-posix",
- "iceoryx2-pal-testing",
+ "iceoryx2-bb-container-qnx8",
+ "iceoryx2-bb-elementary-qnx8",
+ "iceoryx2-bb-elementary-traits-qnx8",
+ "iceoryx2-bb-log-qnx8",
+ "iceoryx2-bb-posix-qnx8",
+ "iceoryx2-bb-testing-qnx8",
+ "iceoryx2-pal-posix-qnx8",
+ "iceoryx2-pal-testing-qnx8",
 ]
 
 [[package]]
@@ -1469,41 +1446,15 @@ name = "iceoryx2-bb-trait-tests"
 version = "0.7.0"
 dependencies = [
  "generic-tests",
- "iceoryx2-bb-container",
- "iceoryx2-bb-elementary",
- "iceoryx2-bb-elementary-traits",
- "iceoryx2-bb-lock-free",
- "iceoryx2-bb-memory",
- "iceoryx2-bb-system-types",
- "iceoryx2-bb-testing",
- "iceoryx2-cal",
- "iceoryx2-pal-testing",
-]
-
-[[package]]
-name = "iceoryx2-cal"
-version = "0.7.0"
-dependencies = [
- "cdr",
- "generic-tests",
- "iceoryx2-bb-container",
- "iceoryx2-bb-derive-macros",
- "iceoryx2-bb-elementary",
- "iceoryx2-bb-elementary-traits",
- "iceoryx2-bb-linux",
- "iceoryx2-bb-lock-free",
- "iceoryx2-bb-log",
- "iceoryx2-bb-memory",
- "iceoryx2-bb-posix",
- "iceoryx2-bb-system-types",
- "iceoryx2-bb-testing",
- "iceoryx2-pal-concurrency-sync",
- "once_cell",
- "postcard",
- "serde",
- "sha1_smol",
- "tiny-fn",
- "toml",
+ "iceoryx2-bb-container-qnx8",
+ "iceoryx2-bb-elementary-qnx8",
+ "iceoryx2-bb-elementary-traits-qnx8",
+ "iceoryx2-bb-lock-free-qnx8",
+ "iceoryx2-bb-memory-qnx8",
+ "iceoryx2-bb-system-types-qnx8",
+ "iceoryx2-bb-testing-qnx8",
+ "iceoryx2-cal-qnx8",
+ "iceoryx2-pal-testing-qnx8",
 ]
 
 [[package]]
@@ -1512,20 +1463,46 @@ version = "0.7.0"
 dependencies = [
  "cdr",
  "iceoryx2-bb-conformance-test-macros",
- "iceoryx2-bb-container",
- "iceoryx2-bb-elementary-traits",
- "iceoryx2-bb-lock-free",
- "iceoryx2-bb-memory",
- "iceoryx2-bb-posix",
- "iceoryx2-bb-system-types",
- "iceoryx2-bb-testing",
- "iceoryx2-cal",
- "iceoryx2-pal-concurrency-sync",
- "iceoryx2-pal-posix",
- "iceoryx2-pal-testing",
+ "iceoryx2-bb-container-qnx8",
+ "iceoryx2-bb-elementary-traits-qnx8",
+ "iceoryx2-bb-lock-free-qnx8",
+ "iceoryx2-bb-memory-qnx8",
+ "iceoryx2-bb-posix-qnx8",
+ "iceoryx2-bb-system-types-qnx8",
+ "iceoryx2-bb-testing-qnx8",
+ "iceoryx2-cal-qnx8",
+ "iceoryx2-pal-concurrency-sync-qnx8",
+ "iceoryx2-pal-posix-qnx8",
+ "iceoryx2-pal-testing-qnx8",
  "lazy_static",
  "postcard",
  "serde",
+ "toml",
+]
+
+[[package]]
+name = "iceoryx2-cal-qnx8"
+version = "0.7.0"
+dependencies = [
+ "cdr",
+ "generic-tests",
+ "iceoryx2-bb-container-qnx8",
+ "iceoryx2-bb-derive-macros-qnx8",
+ "iceoryx2-bb-elementary-qnx8",
+ "iceoryx2-bb-elementary-traits-qnx8",
+ "iceoryx2-bb-linux-qnx8",
+ "iceoryx2-bb-lock-free-qnx8",
+ "iceoryx2-bb-log-qnx8",
+ "iceoryx2-bb-memory-qnx8",
+ "iceoryx2-bb-posix-qnx8",
+ "iceoryx2-bb-system-types-qnx8",
+ "iceoryx2-bb-testing-qnx8",
+ "iceoryx2-pal-concurrency-sync-qnx8",
+ "once_cell",
+ "postcard",
+ "serde",
+ "sha1_smol",
+ "tiny-fn",
  "toml",
 ]
 
@@ -1542,16 +1519,16 @@ dependencies = [
  "dirs",
  "enum-iterator",
  "human-panic",
- "iceoryx2",
- "iceoryx2-bb-container",
- "iceoryx2-bb-elementary",
- "iceoryx2-bb-log",
- "iceoryx2-bb-posix",
- "iceoryx2-bb-system-types",
- "iceoryx2-bb-testing",
- "iceoryx2-cal",
- "iceoryx2-pal-posix",
- "iceoryx2-pal-testing",
+ "iceoryx2-bb-container-qnx8",
+ "iceoryx2-bb-elementary-qnx8",
+ "iceoryx2-bb-log-qnx8",
+ "iceoryx2-bb-posix-qnx8",
+ "iceoryx2-bb-system-types-qnx8",
+ "iceoryx2-bb-testing-qnx8",
+ "iceoryx2-cal-qnx8",
+ "iceoryx2-pal-posix-qnx8",
+ "iceoryx2-pal-testing-qnx8",
+ "iceoryx2-qnx8",
  "iceoryx2-services-discovery",
  "iceoryx2-tunnel",
  "iceoryx2-tunnel-zenoh",
@@ -1569,17 +1546,17 @@ dependencies = [
 name = "iceoryx2-conformance-tests"
 version = "0.7.0"
 dependencies = [
- "iceoryx2",
  "iceoryx2-bb-conformance-test-macros",
- "iceoryx2-bb-container",
- "iceoryx2-bb-derive-macros",
- "iceoryx2-bb-elementary",
- "iceoryx2-bb-log",
- "iceoryx2-bb-posix",
- "iceoryx2-bb-testing",
- "iceoryx2-cal",
- "iceoryx2-pal-concurrency-sync",
- "iceoryx2-pal-testing",
+ "iceoryx2-bb-container-qnx8",
+ "iceoryx2-bb-derive-macros-qnx8",
+ "iceoryx2-bb-elementary-qnx8",
+ "iceoryx2-bb-log-qnx8",
+ "iceoryx2-bb-posix-qnx8",
+ "iceoryx2-bb-testing-qnx8",
+ "iceoryx2-cal-qnx8",
+ "iceoryx2-pal-concurrency-sync-qnx8",
+ "iceoryx2-pal-testing-qnx8",
+ "iceoryx2-qnx8",
 ]
 
 [[package]]
@@ -1588,28 +1565,28 @@ version = "0.7.0"
 dependencies = [
  "cbindgen",
  "generic-tests",
- "iceoryx2",
- "iceoryx2-bb-container",
- "iceoryx2-bb-derive-macros",
- "iceoryx2-bb-elementary",
- "iceoryx2-bb-elementary-traits",
- "iceoryx2-bb-lock-free",
- "iceoryx2-bb-log",
- "iceoryx2-bb-posix",
- "iceoryx2-bb-system-types",
- "iceoryx2-bb-testing",
- "iceoryx2-cal",
+ "iceoryx2-bb-container-qnx8",
+ "iceoryx2-bb-derive-macros-qnx8",
+ "iceoryx2-bb-elementary-qnx8",
+ "iceoryx2-bb-elementary-traits-qnx8",
+ "iceoryx2-bb-lock-free-qnx8",
+ "iceoryx2-bb-log-qnx8",
+ "iceoryx2-bb-posix-qnx8",
+ "iceoryx2-bb-system-types-qnx8",
+ "iceoryx2-bb-testing-qnx8",
+ "iceoryx2-cal-qnx8",
  "iceoryx2-ffi-macros",
- "iceoryx2-pal-concurrency-sync",
- "iceoryx2-pal-testing",
+ "iceoryx2-pal-concurrency-sync-qnx8",
+ "iceoryx2-pal-testing-qnx8",
+ "iceoryx2-qnx8",
 ]
 
 [[package]]
 name = "iceoryx2-ffi-macros"
 version = "0.7.0"
 dependencies = [
- "iceoryx2-bb-elementary",
- "iceoryx2-bb-elementary-traits",
+ "iceoryx2-bb-elementary-qnx8",
+ "iceoryx2-bb-elementary-traits-qnx8",
  "proc-macro2",
  "quote",
  "syn 2.0.87",
@@ -1619,52 +1596,75 @@ dependencies = [
 name = "iceoryx2-ffi-python"
 version = "0.7.0"
 dependencies = [
- "iceoryx2",
- "iceoryx2-bb-log",
+ "iceoryx2-bb-log-qnx8",
+ "iceoryx2-qnx8",
  "pyo3",
 ]
 
 [[package]]
-name = "iceoryx2-pal-concurrency-sync"
+name = "iceoryx2-pal-concurrency-sync-qnx8"
 version = "0.7.0"
 dependencies = [
  "generic-tests",
- "iceoryx2-pal-testing",
+ "iceoryx2-pal-testing-qnx8",
 ]
 
 [[package]]
-name = "iceoryx2-pal-configuration"
+name = "iceoryx2-pal-configuration-qnx8"
 version = "0.7.0"
 
 [[package]]
-name = "iceoryx2-pal-os-api"
+name = "iceoryx2-pal-os-api-qnx8"
 version = "0.7.0"
 dependencies = [
  "bindgen",
  "cc",
- "iceoryx2-pal-posix",
+ "iceoryx2-pal-posix-qnx8",
  "libc",
 ]
 
 [[package]]
-name = "iceoryx2-pal-posix"
+name = "iceoryx2-pal-posix-qnx8"
 version = "0.7.0"
 dependencies = [
  "bindgen",
  "cc",
- "iceoryx2-pal-concurrency-sync",
- "iceoryx2-pal-configuration",
- "iceoryx2-pal-testing",
+ "iceoryx2-pal-concurrency-sync-qnx8",
+ "iceoryx2-pal-configuration-qnx8",
+ "iceoryx2-pal-testing-qnx8",
  "lazy_static",
  "libc",
  "windows-sys 0.48.0",
 ]
 
 [[package]]
-name = "iceoryx2-pal-testing"
+name = "iceoryx2-pal-testing-qnx8"
 version = "0.7.0"
 dependencies = [
- "iceoryx2-pal-configuration",
+ "iceoryx2-pal-configuration-qnx8",
+]
+
+[[package]]
+name = "iceoryx2-qnx8"
+version = "0.7.0"
+dependencies = [
+ "iceoryx2-bb-container-qnx8",
+ "iceoryx2-bb-derive-macros-qnx8",
+ "iceoryx2-bb-elementary-qnx8",
+ "iceoryx2-bb-elementary-traits-qnx8",
+ "iceoryx2-bb-lock-free-qnx8",
+ "iceoryx2-bb-log-qnx8",
+ "iceoryx2-bb-memory-qnx8",
+ "iceoryx2-bb-posix-qnx8",
+ "iceoryx2-bb-system-types-qnx8",
+ "iceoryx2-bb-testing-qnx8",
+ "iceoryx2-cal-qnx8",
+ "iceoryx2-pal-concurrency-sync-qnx8",
+ "iceoryx2-pal-configuration-qnx8",
+ "iceoryx2-pal-testing-qnx8",
+ "serde",
+ "tiny-fn",
+ "toml",
 ]
 
 [[package]]
@@ -1672,12 +1672,12 @@ name = "iceoryx2-services-discovery"
 version = "0.7.0"
 dependencies = [
  "generic-tests",
- "iceoryx2",
- "iceoryx2-bb-elementary",
- "iceoryx2-bb-elementary-traits",
- "iceoryx2-bb-posix",
- "iceoryx2-bb-testing",
- "iceoryx2-pal-testing",
+ "iceoryx2-bb-elementary-qnx8",
+ "iceoryx2-bb-elementary-traits-qnx8",
+ "iceoryx2-bb-posix-qnx8",
+ "iceoryx2-bb-testing-qnx8",
+ "iceoryx2-pal-testing-qnx8",
+ "iceoryx2-qnx8",
  "once_cell",
  "serde",
 ]
@@ -1687,10 +1687,10 @@ name = "iceoryx2-tunnel"
 version = "0.7.0"
 dependencies = [
  "generic-tests",
- "iceoryx2",
- "iceoryx2-bb-log",
- "iceoryx2-bb-posix",
- "iceoryx2-bb-testing",
+ "iceoryx2-bb-log-qnx8",
+ "iceoryx2-bb-posix-qnx8",
+ "iceoryx2-bb-testing-qnx8",
+ "iceoryx2-qnx8",
  "iceoryx2-services-discovery",
  "iceoryx2-tunnel-backend",
 ]
@@ -1699,18 +1699,18 @@ dependencies = [
 name = "iceoryx2-tunnel-backend"
 version = "0.7.0"
 dependencies = [
- "iceoryx2",
- "iceoryx2-bb-testing",
+ "iceoryx2-bb-testing-qnx8",
+ "iceoryx2-qnx8",
 ]
 
 [[package]]
 name = "iceoryx2-tunnel-conformance-tests"
 version = "0.7.0"
 dependencies = [
- "iceoryx2",
  "iceoryx2-bb-conformance-test-macros",
- "iceoryx2-bb-posix",
- "iceoryx2-bb-testing",
+ "iceoryx2-bb-posix-qnx8",
+ "iceoryx2-bb-testing-qnx8",
+ "iceoryx2-qnx8",
  "iceoryx2-services-discovery",
  "iceoryx2-tunnel",
  "iceoryx2-tunnel-backend",
@@ -1721,19 +1721,19 @@ name = "iceoryx2-tunnel-end-to-end-tests"
 version = "0.7.0"
 dependencies = [
  "clap",
- "iceoryx2",
- "iceoryx2-bb-container",
- "iceoryx2-bb-log",
+ "iceoryx2-bb-container-qnx8",
+ "iceoryx2-bb-log-qnx8",
+ "iceoryx2-qnx8",
 ]
 
 [[package]]
 name = "iceoryx2-tunnel-zenoh"
 version = "0.7.0"
 dependencies = [
- "iceoryx2",
- "iceoryx2-bb-log",
- "iceoryx2-bb-posix",
- "iceoryx2-bb-testing",
+ "iceoryx2-bb-log-qnx8",
+ "iceoryx2-bb-posix-qnx8",
+ "iceoryx2-bb-testing-qnx8",
+ "iceoryx2-qnx8",
  "iceoryx2-tunnel-backend",
  "iceoryx2-tunnel-conformance-tests",
  "serde_json",
@@ -1745,15 +1745,15 @@ name = "iceoryx2-userland-record-and-replay"
 version = "0.7.0"
 dependencies = [
  "anyhow",
- "iceoryx2",
- "iceoryx2-bb-container",
- "iceoryx2-bb-elementary",
- "iceoryx2-bb-log",
- "iceoryx2-bb-posix",
- "iceoryx2-bb-system-types",
- "iceoryx2-cal",
- "iceoryx2-pal-concurrency-sync",
- "iceoryx2-pal-testing",
+ "iceoryx2-bb-container-qnx8",
+ "iceoryx2-bb-elementary-qnx8",
+ "iceoryx2-bb-log-qnx8",
+ "iceoryx2-bb-posix-qnx8",
+ "iceoryx2-bb-system-types-qnx8",
+ "iceoryx2-cal-qnx8",
+ "iceoryx2-pal-concurrency-sync-qnx8",
+ "iceoryx2-pal-testing-qnx8",
+ "iceoryx2-qnx8",
  "serde",
 ]
 

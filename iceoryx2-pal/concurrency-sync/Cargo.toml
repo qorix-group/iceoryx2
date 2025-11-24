@@ -1,5 +1,5 @@
 [package]
-name = "iceoryx2-pal-concurrency-sync"
+name = "iceoryx2-pal-concurrency-sync-qnx8"
 description = "iceoryx2: [internal] low-level basic building blocks to implement posix mutex, condition variables etc."
 categories = { workspace = true }
 edition = { workspace = true }

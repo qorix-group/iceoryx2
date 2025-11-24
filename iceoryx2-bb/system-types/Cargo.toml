@@ -1,5 +1,5 @@
 [package]
-name = "iceoryx2-bb-system-types"
+name = "iceoryx2-bb-system-types-qnx8"
 description = "iceoryx2: [internal] strong types that represents low level constructs like file, path, ip address, etc..."
 categories = { workspace = true }
 edition = { workspace = true }

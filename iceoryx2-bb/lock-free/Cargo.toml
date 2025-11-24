@@ -1,5 +1,5 @@
 [package]
-name = "iceoryx2-bb-lock-free"
+name = "iceoryx2-bb-lock-free-qnx8"
 description = "iceoryx2: [internal] lock-free containers and constructs"
 categories = { workspace = true }
 edition = { workspace = true }

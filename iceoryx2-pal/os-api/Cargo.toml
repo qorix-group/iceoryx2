@@ -1,5 +1,5 @@
 [package]
-name = "iceoryx2-pal-os-api"
+name = "iceoryx2-pal-os-api-qnx8"
 description = "iceoryx2: [internal] OS api layer for OS specific features"
 categories = { workspace = true }
 edition = { workspace = true }
