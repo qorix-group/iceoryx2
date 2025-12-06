@@ -13,8 +13,13 @@
 package(default_visibility = ["//visibility:public"])
 
 load("@rules_cc//cc:defs.bzl", "cc_library")
-load("@rules_rust//cargo:defs.bzl", "cargo_build_script")
+load("@rules_rust//cargo:defs.bzl", "cargo_build_script", "cargo_toml_env_vars")
 load("@rules_rust//rust:defs.bzl", "rust_library", "rust_test_suite")
+
+cargo_toml_env_vars(
+    name = "cargo_toml_env_vars",
+    src = "Cargo.toml",
+)
 
 filegroup(
     name = "all_srcs",
@@ -33,33 +38,90 @@ cc_library(
     visibility = ["//visibility:public"],
 )
 
-# Generate the Rust binding file
-genrule(
-    name = "iceoryx2-pal-posix-bindgen",
-    srcs = [
-        "src/c/posix.h",
-        "@bindgen//:bindgen-cli",
+cargo_build_script(
+    name = "_bs",
+    compile_data = glob(
+        allow_empty = True,
+        include = ["**"],
+        exclude = [
+            "**/* *",
+            "**/*.rs",
+            ".tmp_git_root/**/*",
+            "BUILD",
+            "BUILD.bazel",
+            "WORKSPACE",
+            "WORKSPACE.bazel",
+        ],
+    ),
+    crate_name = "build_script_build",
+    crate_root = "build.rs",
+    data = glob(
+        allow_empty = True,
+        include = ["**"],
+        exclude = [
+            "**/* *",
+            ".tmp_git_root/**/*",
+            "BUILD",
+            "BUILD.bazel",
+            "WORKSPACE",
+            "WORKSPACE.bazel",
+        ],
+    ),
+    deps = [
+        "@crate_index//:bindgen",
+        "@crate_index//:cc",
     ],
-    outs = ["posix_generated.rs"],
-    cmd = "$(execpath @bindgen//:bindgen-cli) --use-core --blocklist-type max_align_t $(location src/c/posix.h) --output $(OUTS)",
+    edition = "2021",
+    pkg_name = "iceoryx2-pal-posix",
+    rustc_env_files = [
+        ":cargo_toml_env_vars",
+    ],
+    rustc_flags = [
+        "--cap-lints=allow",
+    ],
+    srcs = glob(
+        allow_empty = True,
+        include = ["**/*.rs"],
+    ),
+    tags = [
+        "cargo-bazel",
+        "crate-name=iceoryx2-pal-posix",
+        "manual",
+        "noclippy",
+        "norustfmt",
+    ],
+    version = "0.7.0",
+    visibility = ["//visibility:private"],
 )
 
-cargo_build_script(
-    name = "bazel_bindgen_workaround",
-    srcs = ["bazel_bindgen_workaround.rs"],
+alias(
+    name = "build_script_build",
+    actual = ":_bs",
+    tags = ["manual"],
 )
 
 # Create the actual crate
 rust_library(
     name = "iceoryx2-pal-posix",
     srcs = glob(["src/**/*.rs"]),
-    compile_data = [ "posix_generated.rs" ],
+    compile_data = glob(
+        allow_empty = True,
+        include = ["**"],
+        exclude = [
+            "**/* *",
+            ".tmp_git_root/**/*",
+            "BUILD",
+            "BUILD.bazel",
+            "WORKSPACE",
+            "WORKSPACE.bazel",
+        ],
+    ),
     deps = [
         "//iceoryx2-pal/concurrency-sync:iceoryx2-pal-concurrency-sync",
         "//iceoryx2-pal/configuration:iceoryx2-pal-configuration",
         "@crate_index//:lazy_static",
         ":iceoryx2-pal-posix-c-lib",
-        ":bazel_bindgen_workaround",
+        ":build_script_build",
     ],
     rustc_env = {
         # - 'lib.rs' expects the location at 'env!("OUT_DIR")/posix_generated.rs'

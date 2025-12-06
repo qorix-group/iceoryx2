@@ -90,5 +90,10 @@ crate.from_cargo(
         "//:iceoryx2-pal/testing/Cargo.toml",
         "//:iceoryx2-userland/record-and-replay/Cargo.toml",
     ],
+    supported_platform_triples = [
+        "aarch64-unknown-nto-qnx710",  # This enables also QNX8 becasue OS and CPU for platform matches....
+        "x86_64-unknown-linux-gnu",
+        "x86_64-unknown-none",
+    ],
 )
 use_repo(crate, "crate_index")

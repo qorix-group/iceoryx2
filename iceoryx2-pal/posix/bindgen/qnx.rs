@@ -17,6 +17,31 @@ use std::env;
 pub fn configure_cargo() {}
 
 pub fn configure_builder(builder: bindgen::Builder) -> bindgen::Builder {
+
+    let cc = std::env::var("CC").unwrap_or_else(|_| "qcc".to_string());
+
+    // For bazel build, replace /proc/self/cwd in QNX environment variables
+    let sysroot_fixed;
+    let m_target: &'static str = "execroot/_main";
+    if let Some(pos) = cc.find(m_target) {
+        // Bazel build
+        sysroot_fixed = &cc[..pos + m_target.len()];
+        println!("{sysroot_fixed}");
+        let target = env::var("QNX_TARGET").unwrap_or_default();
+        let host = env::var("QNX_HOST").unwrap_or_default();
+
+        let new_target = target.replace("/proc/self/cwd", sysroot_fixed);
+        let new_host = host.replace("/proc/self/cwd", sysroot_fixed);
+        env::set_var("QNX_TARGET", new_target);
+        env::set_var("QNX_HOST", new_host);
+    } else {
+        // Cargo build
+        let target = env::var("QNX_TARGET").unwrap_or("none".into());
+        if target == "none" {
+            panic!("QNX_TARGET environment variable is not correctly set for QNX build");
+        }
+    }
+
     let target_arch = std::env::var("CARGO_CFG_TARGET_ARCH").unwrap();
     let target_env = std::env::var("CARGO_CFG_TARGET_ENV").unwrap();
 
