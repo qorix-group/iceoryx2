@@ -13,6 +13,8 @@
 #[cfg(feature = "libc_platform")]
 fn main() {}
 
+const MANUAL_EXTRACT_BINDGEN: [&str; 1] = ["ebclfsa"];
+
 #[cfg(not(feature = "libc_platform"))]
 fn main() {
     extern crate bindgen;
@@ -30,15 +32,13 @@ fn main() {
 
     println!("cargo:rerun-if-changed=src/c/posix.h");
 
-    let mut builder = bindgen::Builder::default()
+    let mut builder = bindgen::Builder::default();
+    builder = get_sysroot_and_isystem_paths(builder);
+
+    builder = builder
         .header("src/c/posix.h")
         .blocklist_type("max_align_t")
         .parse_callbacks(Box::new(CargoCallbacks::new()))
-             .clang_args([
-        "-v",
-        "--sysroot=/home/pawel/.cache/bazel/_bazel_pawel/a34a2686cf83607d33fb859449a78579/execroot/_main/external/score_bazel_cpp_toolchains++gcc+score_ebclfsa_toolchain_pkg",
-        "-I/home/pawel/.cache/bazel/_bazel_pawel/a34a2686cf83607d33fb859449a78579/execroot/_main/external/score_bazel_cpp_toolchains++gcc+score_ebclfsa_toolchain_pkg/usr/aarch64-linux-gnu/include",
-    ])
         .use_core();
 
     if std::env::var("DOCS_RS").is_ok() {
@@ -113,4 +113,63 @@ fn main() {
     cc::Build::new()
         .file("src/c/socket_macros.c")
         .compile("libsocket_macros.a");
+}
+
+fn get_sysroot_and_isystem_paths(builder: bindgen::Builder) -> bindgen::Builder{
+    let cc = std::env::var("CC") .unwrap_or_else(|_| "cc".to_string());
+    let shall_extract = MANUAL_EXTRACT_BINDGEN.iter().any(|&entry| cc.contains(entry));
+    if !shall_extract {
+        return builder;
+    }
+
+    let cflags = std::env::var("CFLAGS").unwrap_or_else(|_| "cc".to_string());
+
+    let tokens: Vec<&str> = cflags.split_whitespace().collect();
+    let mut iter = tokens.iter().peekable();
+    let mut sysroot = None;
+    let mut isystems = Vec::new();
+
+    while let Some(&&tok) = iter.peek() {
+        if tok == "-isystem" {
+            iter.next(); // consume "-isystem"
+            if let Some(path) = iter.next() {
+                isystems.push(path.to_string());
+            }
+        } else if tok.starts_with("-isystem") {
+            // handle concatenated form: -isystem/path
+            let path = tok.trim_start_matches("-isystem");
+            isystems.push(path.to_string());
+            iter.next();
+        } else if tok.starts_with("--sysroot=") {
+            let path = tok.trim_start_matches("--sysroot=");
+            sysroot = Some(path.to_string());
+            iter.next();
+        } else {
+            iter.next();
+        }
+    }
+
+    let target: &'static str = "execroot/_main";
+    let mut repl = None;
+    if let Some(pos) = cc.find(target) {
+        repl = Some(&cc[..pos + target.len()]);
+    }
+
+    let mut ld = std::env::var("LD_LIBRARY_PATH") .unwrap_or_else(|_| "cc".to_string());
+
+    ld = ld.replace("/proc/self/cwd", repl.expect("Failed to find execroot in CC path - shall this toolchain have this patching at all?!"));
+    std::env::set_var("LD_LIBRARY_PATH", ld);
+
+    ld = std::env::var("LD_LIBRARY_PATH") .unwrap_or_else(|_| "cc".to_string());
+    println!("LD_LIBRARY_PATH after correction: {}", ld);
+
+    for path in &isystems {
+        println!("Extended isystem for clang = manual patch: {}", path);
+    }
+
+    if let Some(root) = &sysroot {
+        println!("Extended sysroot for clang = manual patch: {}", root);
+    }
+
+    builder.clang_arg("-v").clang_args(isystems.iter().map(|path| format!("-I{}", path))).clang_args(sysroot.iter().map(|root| format!("--sysroot={}", root)))
 }
