@@ -34,6 +34,11 @@ fn main() {
         .header("src/c/posix.h")
         .blocklist_type("max_align_t")
         .parse_callbacks(Box::new(CargoCallbacks::new()))
+             .clang_args([
+        "-v",
+        "--sysroot=/home/pawel/.cache/bazel/_bazel_pawel/a34a2686cf83607d33fb859449a78579/execroot/_main/external/score_bazel_cpp_toolchains++gcc+score_ebclfsa_toolchain_pkg",
+        "-I/home/pawel/.cache/bazel/_bazel_pawel/a34a2686cf83607d33fb859449a78579/execroot/_main/external/score_bazel_cpp_toolchains++gcc+score_ebclfsa_toolchain_pkg/usr/aarch64-linux-gnu/include",
+    ])
         .use_core();
 
     if std::env::var("DOCS_RS").is_ok() {
