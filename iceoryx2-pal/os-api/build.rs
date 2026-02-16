@@ -39,7 +39,10 @@ fn main() {
 
         let mut builder = bindgen::Builder::default()
             .header("src/c/linux.h")
-            .parse_callbacks(Box::new(CargoCallbacks::new()))
+            .parse_callbacks(Box::new(CargoCallbacks::new())).clang_args([
+                "-v",
+                "--sysroot=aan",
+            ])
             .use_core();
 
         if std::env::var("DOCS_RS").is_ok() {

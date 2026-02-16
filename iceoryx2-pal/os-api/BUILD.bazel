@@ -39,6 +39,10 @@ rust_bindgen_library(
         "--raw-line=#![allow(warnings)]",
         "--raw-line=#![allow(clippy::all)]",
     ],
+    clang_flags = [
+        "-v",
+        "--sysroot=aa",
+    ],
 )
 
 # Create the actual crate
