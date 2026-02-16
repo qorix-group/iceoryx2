@@ -1,5 +1,5 @@
 [package]
-name = "iceoryx2-pal-testing"
+name = "iceoryx2-pal-testing-qnx8"
 description = "iceoryx2: [internal] simple testing primitives"
 categories = { workspace = true }
 edition = { workspace = true }

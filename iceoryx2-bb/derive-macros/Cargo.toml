@@ -1,5 +1,5 @@
 [package]
-name = "iceoryx2-bb-derive-macros"
+name = "iceoryx2-bb-derive-macros-qnx8"
 description = "iceoryx2: [internal] helper derive proc-macros"
 categories = { workspace = true }
 edition = { workspace = true }

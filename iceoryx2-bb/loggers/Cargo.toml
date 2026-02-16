@@ -1,5 +1,5 @@
 [package]
-name = "iceoryx2-bb-loggers"
+name = "iceoryx2-bb-loggers-qnx8"
 description = "iceoryx2: [internal] swappable logger implementations"
 categories = { workspace = true }
 edition = { workspace = true }

@@ -1,5 +1,5 @@
 [package]
-name = "iceoryx2"
+name = "iceoryx2-qnx8"
 description = "iceoryx2: Lock-Free Zero-Copy Interprocess Communication"
 categories = { workspace = true }
 edition = { workspace = true }

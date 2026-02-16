@@ -1,5 +1,5 @@
 [package]
-name = "iceoryx2-bb-container"
+name = "iceoryx2-bb-container-qnx8"
 description = "iceoryx2: IPC shared memory compatible containers"
 categories = { workspace = true }
 edition = { workspace = true }

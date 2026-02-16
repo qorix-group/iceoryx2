@@ -1,5 +1,5 @@
 [package]
-name = "iceoryx2-log-types"
+name = "iceoryx2-log-types-qnx8"
 description = "iceoryx2: logger types and traits"
 categories = { workspace = true }
 edition = { workspace = true }

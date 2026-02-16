@@ -1,5 +1,5 @@
 [package]
-name = "iceoryx2-ffi-macros"
+name = "iceoryx2-ffi-macros-qnx8"
 description = "iceoryx2: [internal] helper proc-macros for ffi"
 categories = { workspace = true }
 edition = { workspace = true }

@@ -1,5 +1,5 @@
 [package]
-name = "iceoryx2-bb-print"
+name = "iceoryx2-bb-print-qnx8"
 description = "iceoryx2: [internal] abstraction over character printing"
 categories = { workspace = true }
 edition = { workspace = true }

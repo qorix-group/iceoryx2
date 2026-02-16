@@ -1,5 +1,5 @@
 [package]
-name = "iceoryx2-bb-conformance-test-macros"
+name = "iceoryx2-bb-conformance-test-macros-qnx8"
 description = "iceoryx2: [internal] Conformance test macros"
 categories = { workspace = true }
 edition = { workspace = true }

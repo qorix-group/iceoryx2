@@ -1,5 +1,5 @@
 [package]
-name = "iceoryx2-userland-record-and-replay"
+name = "iceoryx2-userland-record-and-replay-qnx8"
 description = "iceoryx2: [internal] userland libraries on top of iceoryx2"
 categories = { workspace = true }
 edition = { workspace = true }

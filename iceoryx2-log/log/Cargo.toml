@@ -1,5 +1,5 @@
 [package]
-name = "iceoryx2-log"
+name = "iceoryx2-log-qnx8"
 description = "iceoryx2: logger front-end"
 categories = { workspace = true }
 edition = { workspace = true }

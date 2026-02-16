@@ -1,5 +1,5 @@
 [package]
-name = "iceoryx2-services-discovery"
+name = "iceoryx2-services-discovery-qnx8"
 description = "iceoryx2: discovery services"
 categories = { workspace = true }
 edition = { workspace = true }
